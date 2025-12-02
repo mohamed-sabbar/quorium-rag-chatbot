@@ -1,0 +1,25 @@
+# -- Infrastructure et API Backend --
+fastapi
+uvicorn[standard]  # Serveur ASGI pour FastAPI
+pydantic           # Pour la validation des modèles de données (Requête/Réponse API)
+
+# -- Pipeline RAG (LangChain est l'orchestrateur recommandé) --
+langchain
+langchain-core
+langchain-community
+
+# -- Vector Store (Choisissez-en un : ChromaDB est simple et léger) --
+chromadb
+
+# -- Embeddings (Modèle SOTA léger et open source) --
+sentence-transformers
+
+# -- Chargement des Documents (Loaders) --
+pypdf              # Pour lire les documents PDF
+unstructured       # Recommandé pour parser TXT, MD, et les structures complexes
+
+# -- LLM (Pour la Génération) --
+openai             # Si vous utilisez GPT (via clé API)
+# ou
+# torch              # Si vous optez pour un modèle open source local
+# transformers
