@@ -37,22 +37,26 @@ export default function Chat() {
   };
 
   return (
-    <div className="chat-container">
-      <h1>RAG Chatbot</h1>
-      <div className="chat-box">
-        {messages.map((msg, i) => (
-          <div key={i} className={`message ${msg.role}`}>
-            {msg.content}
-          </div>
-        ))}
+<div className="chat-container">
+  <img src="/logo.jpg" alt="Logo Entreprise" className="logo" />
+  <h1>RAG Chatbot</h1>
+  <div className="chat-box">
+    {messages.map((msg, i) => (
+      <div key={i} className={`message ${msg.role}`}>
+        {msg.content}
       </div>
-      <input
-        type="text"
-        value={question}
-        onChange={(e) => setQuestion(e.target.value)}
-        placeholder="Pose ta question..."
-      />
-      <button onClick={askQuestion}>Envoyer</button>
-    </div>
+    ))}
+  </div>
+  <div className="chat-input">
+    <input
+      type="text"
+      value={question}
+      onChange={(e) => setQuestion(e.target.value)}
+      placeholder="Pose ta question..."
+    />
+    <button onClick={askQuestion}>Envoyer</button>
+  </div>
+</div>
+
   );
 }
