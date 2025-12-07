@@ -1,38 +1,41 @@
 #!/bin/bash
-# Assurez-vous que ce fichier est exécutable : chmod +x docker.sh
+# Make sure this file is executable: chmod +x docker.sh
+# This script provides a simple CLI for managing Docker Compose services
+# for the RAG project (backend + frontend).
 
-# Structure 'case' pour gérer les arguments (build, up, down, ingest, logs)
+# Use a 'case' statement to handle different commands:
+# build, up, down, ingest, logs
 
 case "$1" in
     build)
-        echo "🏗️ Construction des images Docker pour le backend et le frontend..."
-        # Construit les images en lisant les Dockerfiles spécifiés dans docker-compose.yml
+        echo " Building Docker images for backend and frontend"
+        # Build Docker images as defined in docker-compose.yml
         docker-compose build
         ;;
 
     up)
-        echo "🚀 Démarrage des services RAG (Backend et Frontend) en arrière-plan..."
-        # Démarre tous les conteneurs définis dans docker-compose.yml en mode détaché (-d)
+        echo "Starting RAG services (Backend and Frontend) in detached mode"
+        # Start all services defined in docker-compose.yml in detached mode (-d)
         docker-compose up -d
         ;;
 
     down)
-        echo "🗑️ Arrêt et suppression des conteneurs et des réseaux..."
-        # Arrête et supprime l'environnement de travail
+        echo "topping and removing containers and networks..."
+        # Stop and remove all containers and associated networks
         docker-compose down
         ;;
 
     ingest)
-        echo "📄 Exécution du pipeline d'ingestion (ingest.py)..."
-        # Lance le script Python ingest.py dans un conteneur temporaire 'backend'.
-        # --rm : Garantit que le conteneur est supprimé immédiatement après l'exécution (bonne pratique).
-        # C'est la commande qui crée l'index vectoriel persistant.
+        echo "Running the ingestion pipeline (ingest.py)"
+        # Run the ingest.py script inside a temporary backend container
+        # --rm ensures the container is deleted after execution
+        # This creates the persistent vector store for document embeddings
         docker-compose run --rm backend python ingest.py
         ;;
 
     logs)
-        echo "📝 Affichage des logs en temps réel pour le débogage (Ctrl+C pour arrêter)..."
-        # Affiche les logs de tous les services en mode suiveur (-f)
+        echo " Displaying real-time logs for debugging (Ctrl+C to stop)."
+        # Follow logs of all services (-f for "follow")
         docker-compose logs -f
         ;;
 
