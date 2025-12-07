@@ -1,13 +1,24 @@
+# Use the official Node.js 20.11.1 image as the base image
+# This includes Node.js runtime and npm package manager
 FROM node:20.11.1
 
+# Set the working directory inside the container
+# All subsequent commands will be executed from /app
 WORKDIR /app
 
+# Copy package.json and package-lock.json (if exists) into the container
+# This allows installing dependencies before copying the full project,
+# taking advantage of Docker layer caching
 COPY package*.json ./
 
+# Install npm dependencies
 RUN npm install
 
+# Copy the entire project into the container
 COPY . .
 
+# Expose port 3000 for the frontend app
 EXPOSE 3000
-
+# Default command to run the development server
+# "npm run dev" will start the frontend (Next.js, React, etc.) in dev mode
 CMD ["npm", "run", "dev"]
