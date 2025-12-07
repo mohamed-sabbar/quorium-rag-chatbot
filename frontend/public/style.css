@@ -1,31 +1,119 @@
+/* Reset global */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
+  background-color: #f0f2f5;
 }
 
+/* Container principal */
 .chat-container {
   max-width: 600px;
   margin: 50px auto;
-  padding: 20px;
+  padding: 30px 20px 20px 20px;
   background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+/* Logo */
+.chat-container img.logo {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+/* Titre */
+.chat-container h1 {
+  margin: 0 0 20px 0;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+/* Zone des messages */
+.chat-box {
+  width: 100%;
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding-right: 5px; 
+}
+
+/* Messages */
 .message {
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
+  padding: 12px 15px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  word-wrap: break-word;
+  max-width: 80%;
+  line-height: 1.4;
 }
 
+/* Message utilisateur */
 .message.user {
   background-color: #d1e7dd;
+  align-self: flex-end;
   text-align: right;
 }
 
+/* Message bot */
 .message.bot {
   background-color: #f8d7da;
+  align-self: flex-start;
   text-align: left;
+}
+
+/* Zone du formulaire */
+.chat-input-area {
+  width: 100%;
+  display: flex;
+  flex-direction: column; /* input au-dessus + bouton centré */
+  align-items: center;
+  margin-top: 10px;
+
+}
+
+/* Input stylé */
+.chat-container input[type="text"] {
+  width: 90%;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  margin-bottom: 12px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.chat-container input[type="text"]:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 4px rgba(13, 110, 253, 0.4);
+}
+
+/* Bouton centré */
+.chat-container button {
+  width: 40%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background-color: #0d6efd;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+  margin-left: 120px;
+}
+
+/* Effet hover */
+.chat-container button:hover {
+  background-color: #084298;
+  transform: scale(1.03);
+}
+
+/* Effet click */
+.chat-container button:active {
+  transform: scale(0.97);
 }
